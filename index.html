@@ -1,0 +1,730 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>V Méshall Brown — Ink & Intercession</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --ink: #1a1612;
+    --cream: #f5f0e8;
+    --warm: #e8dfd0;
+    --teal: #3d7c78;
+    --teal-light: #5a9e9a;
+    --gold: #b8964a;
+    --muted: #7a6e63;
+    --soft: #d4c9b8;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--cream);
+    color: var(--ink);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.7;
+    overflow-x: hidden;
+  }
+
+  /* NAV */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.2rem 4rem;
+    background: rgba(245, 240, 232, 0.92);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--soft);
+  }
+
+  .nav-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    letter-spacing: 0.05em;
+    color: var(--ink);
+    text-decoration: none;
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  .nav-links a:hover { color: var(--teal); }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 8rem 4rem 6rem;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: -10%;
+    right: -5%;
+    width: 55%;
+    height: 120%;
+    background: radial-gradient(ellipse at center, rgba(61,124,120,0.07) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-tag {
+    font-size: 0.7rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 2rem;
+  }
+
+  .hero h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-weight: 300;
+    line-height: 1.05;
+    max-width: 800px;
+    margin-bottom: 2.5rem;
+    color: var(--ink);
+  }
+
+  .hero h1 em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-prose {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.25rem;
+    font-style: italic;
+    font-weight: 300;
+    color: var(--muted);
+    max-width: 520px;
+    line-height: 1.9;
+    margin-bottom: 3rem;
+    border-left: 2px solid var(--teal);
+    padding-left: 1.5rem;
+  }
+
+  .hero-actions {
+    display: flex;
+    gap: 1.5rem;
+    flex-wrap: wrap;
+  }
+
+  .btn-primary {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 0.9rem 2.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, transform 0.2s;
+  }
+
+  .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
+
+  .btn-outline {
+    background: transparent;
+    color: var(--ink);
+    border: 1px solid var(--ink);
+    padding: 0.9rem 2.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+    transition: background 0.3s, color 0.3s, transform 0.2s;
+  }
+
+  .btn-outline:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
+
+  /* DIVIDER */
+  .divider {
+    width: 60px;
+    height: 1px;
+    background: var(--teal);
+    margin: 0 auto;
+  }
+
+  /* SECTION BASE */
+  section {
+    padding: 6rem 4rem;
+  }
+
+  .section-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .section-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2rem, 4vw, 3.2rem);
+    font-weight: 300;
+    line-height: 1.2;
+    margin-bottom: 2rem;
+  }
+
+  /* ABOUT */
+  .about {
+    background: var(--ink);
+    color: var(--cream);
+  }
+
+  .about-inner {
+    max-width: 720px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .about .section-label { color: var(--teal-light); }
+
+  .about .section-title { color: var(--cream); }
+
+  .about p {
+    font-size: 1.05rem;
+    line-height: 1.9;
+    color: rgba(245,240,232,0.75);
+  }
+
+  /* SCROLLS */
+  .scrolls { background: var(--cream); }
+
+  .scrolls-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-bottom: 3rem;
+    max-width: 1100px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .scrolls-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+
+  .scroll-card {
+    background: white;
+    padding: 2rem;
+    border-top: 3px solid var(--teal);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+  }
+
+  .scroll-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 40px rgba(26,22,18,0.1);
+  }
+
+  .scroll-tag {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.8rem;
+    display: block;
+  }
+
+  .scroll-card h3 {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
+    color: var(--ink);
+  }
+
+  .scroll-card p {
+    font-size: 0.85rem;
+    color: var(--muted);
+    line-height: 1.7;
+  }
+
+  .read-all {
+    text-align: center;
+    margin-top: 3rem;
+  }
+
+  /* PODCAST */
+  .podcast {
+    background: var(--warm);
+  }
+
+  .podcast-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .podcast-desc {
+    font-size: 1rem;
+    color: var(--muted);
+    margin-bottom: 3rem;
+    max-width: 560px;
+  }
+
+  .episode-player {
+    background: var(--ink);
+    color: var(--cream);
+    padding: 2.5rem;
+    border-radius: 2px;
+  }
+
+  .episode-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.25em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    margin-bottom: 0.5rem;
+  }
+
+  .episode-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.6rem;
+    font-weight: 300;
+    margin-bottom: 0.3rem;
+  }
+
+  .episode-meta {
+    font-size: 0.8rem;
+    color: rgba(245,240,232,0.5);
+    margin-bottom: 1.5rem;
+  }
+
+  .player-bar {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .play-btn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    background: var(--teal);
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    transition: background 0.3s;
+  }
+
+  .play-btn:hover { background: var(--teal-light); }
+
+  .play-btn svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
+
+  .progress {
+    flex: 1;
+    height: 2px;
+    background: rgba(255,255,255,0.2);
+    border-radius: 1px;
+    position: relative;
+  }
+
+  .progress-fill {
+    width: 0%;
+    height: 100%;
+    background: var(--teal-light);
+    border-radius: 1px;
+  }
+
+  .time {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.5);
+    white-space: nowrap;
+  }
+
+  .spotify-link {
+    font-size: 0.75rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--teal-light);
+    text-decoration: none;
+    border-bottom: 1px solid var(--teal-light);
+    padding-bottom: 2px;
+    transition: color 0.3s;
+  }
+
+  .spotify-link:hover { color: white; border-color: white; }
+
+  /* DOWNLOADS */
+  .downloads { background: white; }
+
+  .downloads-inner {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .product-card {
+    border: 1px solid var(--soft);
+    padding: 2.5rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .product-badge {
+    display: inline-block;
+    background: var(--teal);
+    color: white;
+    font-size: 0.6rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    padding: 0.3rem 0.7rem;
+    margin-bottom: 1rem;
+  }
+
+  .product-title {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 1.5rem;
+    font-weight: 400;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-desc {
+    font-size: 0.9rem;
+    color: var(--muted);
+    max-width: 420px;
+    line-height: 1.7;
+    margin-bottom: 0.5rem;
+  }
+
+  .product-format {
+    font-size: 0.75rem;
+    color: var(--soft);
+    letter-spacing: 0.1em;
+  }
+
+  .product-cta { text-align: right; flex-shrink: 0; }
+
+  .product-price {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: 2rem;
+    font-weight: 300;
+    color: var(--ink);
+    display: block;
+    margin-bottom: 1rem;
+  }
+
+  /* EMAIL */
+  .email-section {
+    background: var(--ink);
+    color: var(--cream);
+    text-align: center;
+  }
+
+  .email-inner {
+    max-width: 560px;
+    margin: 0 auto;
+  }
+
+  .email-section .section-label { color: var(--teal-light); }
+  .email-section .section-title { color: var(--cream); }
+
+  .email-section p {
+    color: rgba(245,240,232,0.65);
+    font-size: 1rem;
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  .email-form {
+    display: flex;
+    gap: 0;
+    max-width: 440px;
+    margin: 0 auto 1rem;
+  }
+
+  .email-form input {
+    flex: 1;
+    padding: 0.9rem 1.2rem;
+    border: 1px solid rgba(245,240,232,0.2);
+    background: rgba(255,255,255,0.05);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-size: 0.9rem;
+    outline: none;
+  }
+
+  .email-form input::placeholder { color: rgba(245,240,232,0.35); }
+
+  .email-form button {
+    background: var(--teal);
+    color: white;
+    border: none;
+    padding: 0.9rem 1.8rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: background 0.3s;
+    white-space: nowrap;
+  }
+
+  .email-form button:hover { background: var(--teal-light); }
+
+  .email-fine {
+    font-size: 0.75rem;
+    color: rgba(245,240,232,0.35);
+  }
+
+  /* CLOSING QUOTE */
+  .closing {
+    background: var(--cream);
+    text-align: center;
+    padding: 5rem 4rem;
+  }
+
+  .closing blockquote {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-style: italic;
+    font-weight: 300;
+    color: var(--ink);
+    max-width: 600px;
+    margin: 0 auto;
+    line-height: 1.6;
+  }
+
+  /* FOOTER */
+  footer {
+    background: var(--ink);
+    color: rgba(245,240,232,0.4);
+    text-align: center;
+    padding: 2.5rem 4rem;
+    font-size: 0.78rem;
+    letter-spacing: 0.08em;
+  }
+
+  footer a {
+    color: rgba(245,240,232,0.4);
+    text-decoration: none;
+    transition: color 0.3s;
+  }
+
+  footer a:hover { color: var(--teal-light); }
+
+  footer .footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 2rem;
+    margin-bottom: 1rem;
+    flex-wrap: wrap;
+  }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(30px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+
+  .hero-tag { animation: fadeUp 0.8s ease forwards; }
+  .hero h1 { animation: fadeUp 0.8s 0.15s ease forwards; opacity: 0; }
+  .hero-prose { animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0; }
+  .hero-actions { animation: fadeUp 0.8s 0.45s ease forwards; opacity: 0; }
+
+  /* RESPONSIVE */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1.2rem; }
+    section { padding: 4rem 1.5rem; }
+    .hero { padding: 7rem 1.5rem 4rem; }
+    .scrolls-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .product-card { flex-direction: column; }
+    .product-cta { text-align: left; }
+    .email-form { flex-direction: column; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="#" class="nav-name">V Méshall Brown</a>
+  <ul class="nav-links">
+    <li><a href="#writing">Writing</a></li>
+    <li><a href="#podcast">Podcast</a></li>
+    <li><a href="#books">Books</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <span class="hero-tag">The V — V Méshall Brown</span>
+  <h1>Some things take time<br>to find their <em>words.</em></h1>
+  <p class="hero-prose">
+    This is a space for the in-between — the questions that linger, the faith that holds, and the writing that comes when you finally get still enough to listen.
+  </p>
+  <div class="hero-actions">
+    <a href="#email" class="btn-primary">Join the list</a>
+    <a href="#podcast" class="btn-outline">Listen to the podcast</a>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section class="about">
+  <div class="about-inner">
+    <span class="section-label">About This Space</span>
+    <h2 class="section-title">You found this place because something in you is still working something out.</h2>
+    <p>
+      The V is where V Méshall Brown writes about faith, grief, becoming, and the quiet work of staying present through all of it. Weekly reflections. Honest conversations. A podcast for the questions that do not have clean answers yet.
+    </p>
+  </div>
+</section>
+
+<!-- RECENT SCROLLS -->
+<section class="scrolls" id="writing">
+  <div class="scrolls-header">
+    <div>
+      <span class="section-label">Recent Scrolls</span>
+      <h2 class="section-title">Reflections worth reading slowly.</h2>
+    </div>
+  </div>
+  <div class="scrolls-grid">
+    <div class="scroll-card">
+      <span class="scroll-tag">Reflection</span>
+      <h3>The prayer I kept saying even when I stopped believing it</h3>
+      <p>On intercession, muscle memory, and what faith looks like when it runs on empty.</p>
+    </div>
+    <div class="scroll-card">
+      <span class="scroll-tag">Faith</span>
+      <h3>What the valley actually looks like from inside it</h3>
+      <p>Not a metaphor. A testimony about the night my son went missing and what I learned about God in the silence.</p>
+    </div>
+    <div class="scroll-card">
+      <span class="scroll-tag">Becoming</span>
+      <h3>She baked because she knew something we didn't</h3>
+      <p>On my great-aunt's kitchen, the things she never said out loud, and the recipes that outlasted her.</p>
+    </div>
+    <div class="scroll-card">
+      <span class="scroll-tag">Voice</span>
+      <h3>Your confession goes ahead of you</h3>
+      <p>The words Pastor Neva said that stopped me mid-step — and the forty days of prayer that followed.</p>
+    </div>
+  </div>
+  <div class="read-all">
+    <a href="#" class="btn-outline">Read all on Substack</a>
+  </div>
+</section>
+
+<!-- PODCAST -->
+<section class="podcast" id="podcast">
+  <div class="podcast-inner">
+    <span class="section-label">From the In-Between — Podcast</span>
+    <h2 class="section-title">Conversations for the space between where you were and where you are going.</h2>
+    <p class="podcast-desc">Each episode is a real conversation about faith, loss, identity, and the slow work of becoming. No performance. No formulas. Just honest talk from someone who is still in it too.</p>
+
+    <div class="episode-player">
+      <div class="episode-label">Latest Episode</div>
+      <div class="episode-title">When the waiting is the answer</div>
+      <div class="episode-meta">Episode 12 · 34 min</div>
+      <div class="player-bar">
+        <button class="play-btn" onclick="this.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'6\' y=\'4\' width=\'4\' height=\'16\'/><rect x=\'14\' y=\'4\' width=\'4\' height=\'16\'/></svg>'; return false;">
+          <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
+        </button>
+        <div class="progress"><div class="progress-fill"></div></div>
+        <span class="time">0:00 / 34:12</span>
+      </div>
+      <a href="#" class="spotify-link">Listen on Spotify →</a>
+    </div>
+  </div>
+</section>
+
+<!-- DOWNLOADS -->
+<section class="downloads" id="books">
+  <div class="downloads-inner">
+    <span class="section-label">Digital Downloads — Payhip</span>
+    <h2 class="section-title">Resources for the in-between.</h2>
+    <div class="product-card">
+      <div>
+        <span class="product-badge">New</span>
+        <div class="product-title">Voice Activated — 40-Day Prayer Guide</div>
+        <p class="product-desc">Forty prophetic prayers rooted in Scripture. Written to be spoken aloud. One per day, from creation to all things made new.</p>
+        <div class="product-format">Digital PDF · Instant download</div>
+      </div>
+      <div class="product-cta">
+        <span class="product-price">$7.99</span>
+        <a href="#" class="btn-primary">Get the guide</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EMAIL -->
+<section class="email-section" id="email">
+  <div class="email-inner">
+    <span class="section-label">Join the List</span>
+    <h2 class="section-title">Stay in the room.</h2>
+    <p>Writing that finds you when you need it. Weekly scrolls. Honest reflections. The occasional reminder that you are not alone in the in-between. No noise. Just words worth keeping.</p>
+    <div class="email-form">
+      <input type="email" placeholder="your@email.com">
+      <button type="button">I'm in</button>
+    </div>
+    <p class="email-fine">No selling. No noise. Unsubscribe anytime.</p>
+  </div>
+</section>
+
+<!-- CLOSING QUOTE -->
+<section class="closing">
+  <div class="divider" style="margin-bottom: 2.5rem;"></div>
+  <blockquote>You are not behind. You are becoming.</blockquote>
+  <div class="divider" style="margin-top: 2.5rem;"></div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-links">
+    <a href="#">Substack</a>
+    <a href="#">Podcast</a>
+    <a href="#">Books</a>
+    <a href="#">Payhip</a>
+  </div>
+  <p>© 2025 V Méshall Brown · Ink & Intercession</p>
+</footer>
+
+</body>
+</html>
