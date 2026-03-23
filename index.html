@@ -4,21 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>V Méshall Brown — Ink & Intercession</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
-    --ink: #1a1612;
-    --cream: #f5f0e8;
-    --warm: #e8dfd0;
-    --teal: #3d7c78;
-    --teal-light: #5a9e9a;
+    --parchment: #f2e8d5;
+    --parchment-dark: #e8d9bf;
+    --sepia: #c4a882;
+    --sepia-dark: #8b6f47;
+    --ink: #1e1810;
+    --ink-soft: #2d2416;
+    --warm-brown: #5c4033;
+    --muted: #7a6a55;
     --gold: #b8964a;
-    --muted: #7a6e63;
-    --soft: #d4c9b8;
+    --cream: #faf6ef;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
-
   html { scroll-behavior: smooth; }
 
   body {
@@ -30,7 +31,6 @@
     overflow-x: hidden;
   }
 
-  /* NAV */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
@@ -39,542 +39,186 @@
     justify-content: space-between;
     align-items: center;
     padding: 1.2rem 4rem;
-    background: rgba(245, 240, 232, 0.92);
+    background: rgba(242, 232, 213, 0.95);
     backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--soft);
+    border-bottom: 1px solid var(--sepia);
   }
 
-  .nav-name {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    letter-spacing: 0.05em;
-    color: var(--ink);
-    text-decoration: none;
-  }
+  .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+  .nav-logo img { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--warm-brown); }
 
-  .nav-links {
-    display: flex;
-    gap: 2.5rem;
-    list-style: none;
-  }
-
-  .nav-links a {
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    color: var(--muted);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
-
-  .nav-links a:hover { color: var(--teal); }
-
-  /* HERO */
   .hero {
     min-height: 100vh;
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    align-items: center;
     padding: 8rem 4rem 6rem;
     position: relative;
+    background: var(--parchment);
     overflow: hidden;
   }
 
   .hero::before {
     content: '';
     position: absolute;
-    top: -10%;
-    right: -5%;
-    width: 55%;
-    height: 120%;
-    background: radial-gradient(ellipse at center, rgba(61,124,120,0.07) 0%, transparent 70%);
+    inset: 0;
+    background: radial-gradient(ellipse at 80% 50%, rgba(196,168,130,0.2) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(92,64,51,0.08) 0%, transparent 50%);
     pointer-events: none;
   }
 
-  .hero-tag {
-    font-size: 0.7rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 2rem;
-  }
+  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
+  .hero-tag { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 2rem; display: block; }
 
   .hero h1 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(3.5rem, 7vw, 7rem);
+    font-size: clamp(2.8rem, 5vw, 5rem);
     font-weight: 300;
-    line-height: 1.05;
-    max-width: 800px;
-    margin-bottom: 2.5rem;
+    line-height: 1.15;
     color: var(--ink);
-  }
-
-  .hero h1 em {
-    font-style: italic;
-    color: var(--teal);
-  }
-
-  .hero-prose {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
-    font-style: italic;
-    font-weight: 300;
-    color: var(--muted);
-    max-width: 520px;
-    line-height: 1.9;
-    margin-bottom: 3rem;
-    border-left: 2px solid var(--teal);
-    padding-left: 1.5rem;
-  }
-
-  .hero-actions {
-    display: flex;
-    gap: 1.5rem;
-    flex-wrap: wrap;
-  }
-
-  .btn-primary {
-    background: var(--teal);
-    color: white;
-    border: none;
-    padding: 0.9rem 2.2rem;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s, transform 0.2s;
-  }
-
-  .btn-primary:hover { background: var(--teal-light); transform: translateY(-2px); }
-
-  .btn-outline {
-    background: transparent;
-    color: var(--ink);
-    border: 1px solid var(--ink);
-    padding: 0.9rem 2.2rem;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    text-decoration: none;
-    display: inline-block;
-    transition: background 0.3s, color 0.3s, transform 0.2s;
-  }
-
-  .btn-outline:hover { background: var(--ink); color: var(--cream); transform: translateY(-2px); }
-
-  /* DIVIDER */
-  .divider {
-    width: 60px;
-    height: 1px;
-    background: var(--teal);
-    margin: 0 auto;
-  }
-
-  /* SECTION BASE */
-  section {
-    padding: 6rem 4rem;
-  }
-
-  .section-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.3em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 1rem;
-    display: block;
-  }
-
-  .section-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2rem, 4vw, 3.2rem);
-    font-weight: 300;
-    line-height: 1.2;
     margin-bottom: 2rem;
   }
 
-  /* ABOUT */
-  .about {
-    background: var(--ink);
-    color: var(--cream);
-  }
+  .hero h1 em { font-style: italic; color: var(--warm-brown); }
 
-  .about-inner {
-    max-width: 720px;
-    margin: 0 auto;
-    text-align: center;
-  }
-
-  .about .section-label { color: var(--teal-light); }
-
-  .about .section-title { color: var(--cream); }
-
-  .about p {
-    font-size: 1.05rem;
-    line-height: 1.9;
-    color: rgba(245,240,232,0.75);
-  }
-
-  /* SCROLLS */
-  .scrolls { background: var(--cream); }
-
-  .scrolls-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-end;
-    margin-bottom: 3rem;
-    max-width: 1100px;
-    margin-left: auto;
-    margin-right: auto;
-  }
-
-  .scrolls-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-    gap: 2rem;
-    max-width: 1100px;
-    margin: 0 auto;
-  }
-
-  .scroll-card {
-    background: white;
-    padding: 2rem;
-    border-top: 3px solid var(--teal);
-    transition: transform 0.3s, box-shadow 0.3s;
-    cursor: pointer;
-  }
-
-  .scroll-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 40px rgba(26,22,18,0.1);
-  }
-
-  .scroll-tag {
-    font-size: 0.65rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    color: var(--teal);
-    margin-bottom: 0.8rem;
-    display: block;
-  }
-
-  .scroll-card h3 {
+  .hero-sub {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.2rem;
-    font-weight: 400;
-    line-height: 1.4;
-    margin-bottom: 0.8rem;
-    color: var(--ink);
-  }
-
-  .scroll-card p {
-    font-size: 0.85rem;
-    color: var(--muted);
-    line-height: 1.7;
-  }
-
-  .read-all {
-    text-align: center;
-    margin-top: 3rem;
-  }
-
-  /* PODCAST */
-  .podcast {
-    background: var(--warm);
-  }
-
-  .podcast-inner {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .podcast-desc {
-    font-size: 1rem;
-    color: var(--muted);
-    margin-bottom: 3rem;
-    max-width: 560px;
-  }
-
-  .episode-player {
-    background: var(--ink);
-    color: var(--cream);
-    padding: 2.5rem;
-    border-radius: 2px;
-  }
-
-  .episode-label {
-    font-size: 0.65rem;
-    letter-spacing: 0.25em;
-    text-transform: uppercase;
-    color: var(--teal-light);
-    margin-bottom: 0.5rem;
-  }
-
-  .episode-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.6rem;
-    font-weight: 300;
-    margin-bottom: 0.3rem;
-  }
-
-  .episode-meta {
-    font-size: 0.8rem;
-    color: rgba(245,240,232,0.5);
-    margin-bottom: 1.5rem;
-  }
-
-  .player-bar {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    margin-bottom: 1.5rem;
-  }
-
-  .play-btn {
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: var(--teal);
-    border: none;
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    transition: background 0.3s;
-  }
-
-  .play-btn:hover { background: var(--teal-light); }
-
-  .play-btn svg { width: 16px; height: 16px; fill: white; margin-left: 2px; }
-
-  .progress {
-    flex: 1;
-    height: 2px;
-    background: rgba(255,255,255,0.2);
-    border-radius: 1px;
-    position: relative;
-  }
-
-  .progress-fill {
-    width: 0%;
-    height: 100%;
-    background: var(--teal-light);
-    border-radius: 1px;
-  }
-
-  .time {
-    font-size: 0.75rem;
-    color: rgba(245,240,232,0.5);
-    white-space: nowrap;
-  }
-
-  .spotify-link {
-    font-size: 0.75rem;
-    letter-spacing: 0.1em;
-    text-transform: uppercase;
-    color: var(--teal-light);
-    text-decoration: none;
-    border-bottom: 1px solid var(--teal-light);
-    padding-bottom: 2px;
-    transition: color 0.3s;
-  }
-
-  .spotify-link:hover { color: white; border-color: white; }
-
-  /* DOWNLOADS */
-  .downloads { background: white; }
-
-  .downloads-inner {
-    max-width: 800px;
-    margin: 0 auto;
-  }
-
-  .product-card {
-    border: 1px solid var(--soft);
-    padding: 2.5rem;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 2rem;
-    flex-wrap: wrap;
-  }
-
-  .product-badge {
-    display: inline-block;
-    background: var(--teal);
-    color: white;
-    font-size: 0.6rem;
-    letter-spacing: 0.2em;
-    text-transform: uppercase;
-    padding: 0.3rem 0.7rem;
-    margin-bottom: 1rem;
-  }
-
-  .product-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.5rem;
-    font-weight: 400;
-    margin-bottom: 0.5rem;
-  }
-
-  .product-desc {
-    font-size: 0.9rem;
-    color: var(--muted);
-    max-width: 420px;
-    line-height: 1.7;
-    margin-bottom: 0.5rem;
-  }
-
-  .product-format {
-    font-size: 0.75rem;
-    color: var(--soft);
-    letter-spacing: 0.1em;
-  }
-
-  .product-cta { text-align: right; flex-shrink: 0; }
-
-  .product-price {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2rem;
-    font-weight: 300;
-    color: var(--ink);
-    display: block;
-    margin-bottom: 1rem;
-  }
-
-  /* EMAIL */
-  .email-section {
-    background: var(--ink);
-    color: var(--cream);
-    text-align: center;
-  }
-
-  .email-inner {
-    max-width: 560px;
-    margin: 0 auto;
-  }
-
-  .email-section .section-label { color: var(--teal-light); }
-  .email-section .section-title { color: var(--cream); }
-
-  .email-section p {
-    color: rgba(245,240,232,0.65);
-    font-size: 1rem;
-    line-height: 1.9;
-    margin-bottom: 2.5rem;
-  }
-
-  .email-form {
-    display: flex;
-    gap: 0;
-    max-width: 440px;
-    margin: 0 auto 1rem;
-  }
-
-  .email-form input {
-    flex: 1;
-    padding: 0.9rem 1.2rem;
-    border: 1px solid rgba(245,240,232,0.2);
-    background: rgba(255,255,255,0.05);
-    color: var(--cream);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.9rem;
-    outline: none;
-  }
-
-  .email-form input::placeholder { color: rgba(245,240,232,0.35); }
-
-  .email-form button {
-    background: var(--teal);
-    color: white;
-    border: none;
-    padding: 0.9rem 1.8rem;
-    font-family: 'Jost', sans-serif;
-    font-size: 0.75rem;
-    letter-spacing: 0.15em;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: background 0.3s;
-    white-space: nowrap;
-  }
-
-  .email-form button:hover { background: var(--teal-light); }
-
-  .email-fine {
-    font-size: 0.75rem;
-    color: rgba(245,240,232,0.35);
-  }
-
-  /* CLOSING QUOTE */
-  .closing {
-    background: var(--cream);
-    text-align: center;
-    padding: 5rem 4rem;
-  }
-
-  .closing blockquote {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.4rem, 3vw, 2rem);
+    font-size: 1.1rem;
     font-style: italic;
-    font-weight: 300;
-    color: var(--ink);
-    max-width: 600px;
-    margin: 0 auto;
-    line-height: 1.6;
+    color: var(--muted);
+    line-height: 1.8;
+    margin-bottom: 2.5rem;
+    border-left: 2px solid var(--sepia);
+    padding-left: 1.2rem;
   }
 
-  /* FOOTER */
-  footer {
-    background: var(--ink);
-    color: rgba(245,240,232,0.4);
-    text-align: center;
-    padding: 2.5rem 4rem;
-    font-size: 0.78rem;
-    letter-spacing: 0.08em;
-  }
+  .hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
+  .hero-right { display: flex; justify-content: center; align-items: center; }
+  .hero-logo { width: 100%; max-width: 380px; opacity: 0.92; filter: sepia(15%); }
 
-  footer a {
-    color: rgba(245,240,232,0.4);
-    text-decoration: none;
-    transition: color 0.3s;
-  }
+  .btn-primary { background: var(--warm-brown); color: var(--parchment); border: none; padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.2s; }
+  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); }
 
-  footer a:hover { color: var(--teal-light); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--sepia-dark); padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+  .btn-outline:hover { background: var(--ink); color: var(--parchment); border-color: var(--ink); transform: translateY(-2px); }
 
-  footer .footer-links {
-    display: flex;
-    justify-content: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
-    flex-wrap: wrap;
-  }
+  section { padding: 6rem 4rem; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 1rem; display: block; }
+  .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 0.5rem; color: var(--ink); }
 
-  /* ANIMATIONS */
-  @keyframes fadeUp {
-    from { opacity: 0; transform: translateY(30px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
+  .about { background: var(--ink-soft); color: var(--parchment); }
+  .about-inner { max-width: 680px; margin: 0 auto; text-align: center; }
+  .about .section-label { color: var(--sepia); }
+  .about .section-title { color: var(--parchment); }
+  .about p { font-size: 1.05rem; line-height: 1.95; color: rgba(242,232,213,0.75); }
 
+  .scrolls { background: var(--cream); }
+  .scrolls-subline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7; }
+
+  .scrolls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
+
+  .scroll-card { background: var(--parchment); padding: 2rem; border-top: 2px solid var(--sepia); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; }
+  .scroll-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,24,16,0.1); }
+  .scroll-tag { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 0.8rem; display: block; }
+  .scroll-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.4; margin-bottom: 0.7rem; color: var(--ink); }
+  .scroll-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
+  .read-all { text-align: center; margin-top: 1rem; }
+
+  .podcast-intro { background: var(--parchment-dark); padding: 5rem 4rem; }
+  .podcast-intro-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .podcast-intro .section-label { color: var(--sepia-dark); }
+  .podcast-intro .section-title { font-size: clamp(1.6rem, 3vw, 2.6rem); margin-bottom: 1.5rem; color: var(--ink); }
+  .podcast-intro p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); line-height: 1.9; }
+
+  .podcast { background: var(--ink); }
+  .podcast .section-label { color: var(--sepia); }
+  .podcast-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(242,232,213,0.92); line-height: 1.9; margin-bottom: 3rem; max-width: 560px; }
+
+  .episode-player { background: rgba(242,232,213,0.06); border: 1px solid rgba(196,168,130,0.2); padding: 2.5rem; max-width: 680px; }
+  .episode-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sepia); margin-bottom: 0.5rem; }
+  .episode-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--parchment); margin-bottom: 0.3rem; }
+  .episode-meta { font-size: 0.78rem; color: rgba(242,232,213,0.4); margin-bottom: 1.5rem; }
+  .player-bar { display: flex; align-items: center; gap: 1rem; margin-bottom: 1.5rem; }
+  .play-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--sepia-dark); border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; transition: background 0.3s; }
+  .play-btn:hover { background: var(--gold); }
+  .play-btn svg { width: 14px; height: 14px; fill: white; margin-left: 2px; }
+  .progress { flex: 1; height: 1px; background: rgba(255,255,255,0.15); }
+  .time { font-size: 0.72rem; color: rgba(242,232,213,0.4); white-space: nowrap; }
+  .spotify-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia); text-decoration: none; border-bottom: 1px solid var(--sepia); padding-bottom: 2px; transition: color 0.3s; }
+  .spotify-link:hover { color: var(--parchment); border-color: var(--parchment); }
+
+  .guides { background: var(--cream); }
+  .guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
+  .guide-card { border: 1px solid var(--parchment-dark); padding: 2.5rem; background: var(--parchment); }
+  .guide-badge { display: inline-block; font-size: 0.6rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sepia-dark); border: 1px solid var(--sepia); padding: 0.25rem 0.6rem; margin-bottom: 1rem; }
+  .guide-title { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; font-weight: 400; margin-bottom: 0.7rem; color: var(--ink); }
+  .guide-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.5rem; }
+  .guide-format { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--sepia); margin-bottom: 1.5rem; }
+
+  .books { background: var(--parchment); }
+  .books .section-label { color: var(--sepia-dark); }
+  .books-stack { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
+
+  .book-card-primary { display: grid; grid-template-columns: 1fr 2.5fr; gap: 4rem; align-items: start; padding: 3rem; background: var(--ink-soft); color: var(--parchment); }
+  .book-spine { background: var(--warm-brown); aspect-ratio: 2/3; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+  .book-spine::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%); }
+  .book-spine-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--parchment); line-height: 1.1; letter-spacing: 0.08em; text-transform: uppercase; }
+  .book-content { padding: 0.5rem 0; }
+  .book-badge { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sepia); margin-bottom: 1rem; display: block; }
+  .book-title-main { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--parchment); margin-bottom: 0.2rem; line-height: 1.05; letter-spacing: 0.03em; }
+  .book-subtitle { font-family: 'Cormorant Garamond', serif; font-style: italic; color: var(--sepia); font-size: 1rem; margin-bottom: 1.5rem; line-height: 1.5; }
+  .book-desc { font-size: 0.95rem; color: rgba(242,232,213,0.78); line-height: 1.9; margin-bottom: 0.8rem; }
+  .book-testimony { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--sepia); margin-bottom: 2rem; line-height: 1.6; }
+  .book-links { display: flex; flex-direction: column; gap: 0.7rem; }
+  .book-link { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--sepia); text-decoration: none; border-bottom: 1px solid rgba(196,168,130,0.25); padding-bottom: 3px; display: inline-block; transition: color 0.3s, border-color 0.3s; width: fit-content; }
+  .book-link:hover { color: var(--parchment); border-color: var(--parchment); }
+
+  .book-card-secondary { padding: 2.5rem; border: 1px solid var(--parchment-dark); background: white; }
+  .book-title-secondary { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
+  .book-desc-secondary { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
+
+  /* EMAIL — LIGHT */
+  .email-section { background: var(--parchment); color: var(--ink); text-align: center; border-top: 1px solid var(--parchment-dark); }
+  .email-inner { max-width: 520px; margin: 0 auto; }
+  .email-section .section-label { color: var(--sepia-dark); }
+  .email-section .section-title { color: var(--ink); margin-bottom: 1.5rem; }
+  .email-section p { color: var(--muted); font-size: 1rem; line-height: 1.9; margin-bottom: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .email-form { display: flex; max-width: 420px; margin: 0 auto 1rem; }
+  .email-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid var(--sepia); background: white; color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.9rem; outline: none; }
+  .email-form input::placeholder { color: var(--sepia); }
+  .email-form button { background: var(--warm-brown); color: var(--parchment); border: none; padding: 0.9rem 1.6rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+  .email-form button:hover { background: var(--ink); }
+  .email-fine { font-size: 0.72rem; color: var(--muted); }
+
+  .closing { background: var(--ink-soft); text-align: center; padding: 5rem 4rem; }
+  .closing blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-style: italic; font-weight: 300; color: var(--parchment); max-width: 560px; margin: 0 auto; line-height: 1.6; }
+  .closing-rule { width: 50px; height: 1px; background: var(--sepia); margin: 2rem auto; }
+
+  footer { background: var(--ink); color: rgba(242,232,213,0.35); text-align: center; padding: 2.5rem 4rem; font-size: 0.75rem; letter-spacing: 0.08em; }
+  footer a { color: rgba(242,232,213,0.35); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--sepia); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
   .hero-tag { animation: fadeUp 0.8s ease forwards; }
   .hero h1 { animation: fadeUp 0.8s 0.15s ease forwards; opacity: 0; }
-  .hero-prose { animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0; }
+  .hero-sub { animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0; }
   .hero-actions { animation: fadeUp 0.8s 0.45s ease forwards; opacity: 0; }
+  .hero-right { animation: fadeUp 1s 0.2s ease forwards; opacity: 0; }
 
-  /* RESPONSIVE */
-  @media (max-width: 768px) {
+  @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
-    section { padding: 4rem 1.5rem; }
+    section, .podcast-intro { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 4rem; }
-    .scrolls-header { flex-direction: column; align-items: flex-start; gap: 1rem; }
-    .product-card { flex-direction: column; }
-    .product-cta { text-align: left; }
+    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .hero-right { order: -1; }
+    .hero-logo { max-width: 240px; }
+    .book-card-primary { grid-template-columns: 1fr; gap: 2rem; }
+    .book-spine { aspect-ratio: 3/1; }
     .email-form { flex-direction: column; }
     footer { padding: 2rem 1.5rem; }
   }
@@ -582,9 +226,11 @@
 </head>
 <body>
 
-<!-- NAV -->
 <nav>
-  <a href="#" class="nav-name">V Méshall Brown</a>
+  <a href="#" class="nav-logo">
+    <img src="ink_and_intercession2.png" alt="Ink & Intercession">
+    <span class="nav-name">V Méshall Brown</span>
+  </a>
   <ul class="nav-links">
     <li><a href="#writing">Writing</a></li>
     <li><a href="#podcast">Podcast</a></li>
@@ -592,81 +238,79 @@
   </ul>
 </nav>
 
-<!-- HERO -->
 <section class="hero">
-  <span class="hero-tag">The V — V Méshall Brown</span>
-  <h1>Some things take time<br>to find their <em>words.</em></h1>
-  <p class="hero-prose">
-    This is a space for the in-between — the questions that linger, the faith that holds, and the writing that comes when you finally get still enough to listen.
-  </p>
-  <div class="hero-actions">
-    <a href="#email" class="btn-primary">Join the list</a>
-    <a href="#podcast" class="btn-outline">Listen to the podcast</a>
+  <div class="hero-inner">
+    <div class="hero-left">
+      <span class="hero-tag">V Méshall Brown</span>
+      <h1>Some things follow me home.<br>This is where they become <em>words.</em></h1>
+      <p class="hero-sub">Ink & Intercession — writing from the in-between.</p>
+      <div class="hero-actions">
+        <a href="#email" class="btn-primary">Join the list</a>
+        <a href="#podcast" class="btn-outline">Listen to the podcast</a>
+      </div>
+    </div>
+    <div class="hero-right">
+      <img src="ink_and_intercession2.png" alt="Ink & Intercession" class="hero-logo">
+    </div>
   </div>
 </section>
 
-<!-- ABOUT -->
 <section class="about">
   <div class="about-inner">
     <span class="section-label">About This Space</span>
-    <h2 class="section-title">You found this place because something in you is still working something out.</h2>
-    <p>
-      The V is where V Méshall Brown writes about faith, grief, becoming, and the quiet work of staying present through all of it. Weekly reflections. Honest conversations. A podcast for the questions that do not have clean answers yet.
-    </p>
+    <h2 class="section-title">Sometimes the thing you're looking for finds you first.</h2>
+    <p>That's what writing became for me.</p>
+    <p style="margin-top: 1rem;">And if you're here, maybe something is finding you too.</p>
+    <p style="margin-top: 1rem;">I write about what I see, what stays, and the people I meet along the way.</p>
   </div>
 </section>
 
-<!-- RECENT SCROLLS -->
 <section class="scrolls" id="writing">
-  <div class="scrolls-header">
-    <div>
-      <span class="section-label">Recent Scrolls</span>
-      <h2 class="section-title">Reflections worth reading slowly.</h2>
+  <div class="section-inner">
+    <span class="section-label">Scrolls</span>
+    <h2 class="section-title">From the In-Between</h2>
+    <p class="scrolls-subline">What I witness. What I write. What I carry. What becomes prayer.</p>
+    <div class="scrolls-grid">
+      <div class="scroll-card">
+        <span class="scroll-tag">Reflection</span>
+        <h3>The prayer I kept saying even when I stopped believing it</h3>
+        <p>On intercession, muscle memory, and what faith looks like when it runs on empty.</p>
+      </div>
+      <div class="scroll-card">
+        <span class="scroll-tag">Faith</span>
+        <h3>What the valley actually looks like from inside it</h3>
+        <p>Not a metaphor. A testimony about the night my son went missing and what I learned about God in the silence.</p>
+      </div>
+      <div class="scroll-card">
+        <span class="scroll-tag">Becoming</span>
+        <h3>She baked because she knew something we didn't</h3>
+        <p>On my great-aunt's kitchen, the things she never said out loud, and the recipes that outlasted her.</p>
+      </div>
+      <div class="scroll-card">
+        <span class="scroll-tag">Voice</span>
+        <h3>Your confession goes ahead of you</h3>
+        <p>The words Pastor Neva said that stopped me mid-step — and the forty days of prayer that followed.</p>
+      </div>
     </div>
-  </div>
-  <div class="scrolls-grid">
-    <div class="scroll-card">
-      <span class="scroll-tag">Reflection</span>
-      <h3>The prayer I kept saying even when I stopped believing it</h3>
-      <p>On intercession, muscle memory, and what faith looks like when it runs on empty.</p>
+    <div class="read-all">
+      <a href="https://inkandintercession.substack.com" class="btn-outline">Read all on Substack</a>
     </div>
-    <div class="scroll-card">
-      <span class="scroll-tag">Faith</span>
-      <h3>What the valley actually looks like from inside it</h3>
-      <p>Not a metaphor. A testimony about the night my son went missing and what I learned about God in the silence.</p>
-    </div>
-    <div class="scroll-card">
-      <span class="scroll-tag">Becoming</span>
-      <h3>She baked because she knew something we didn't</h3>
-      <p>On my great-aunt's kitchen, the things she never said out loud, and the recipes that outlasted her.</p>
-    </div>
-    <div class="scroll-card">
-      <span class="scroll-tag">Voice</span>
-      <h3>Your confession goes ahead of you</h3>
-      <p>The words Pastor Neva said that stopped me mid-step — and the forty days of prayer that followed.</p>
-    </div>
-  </div>
-  <div class="read-all">
-    <a href="#" class="btn-outline">Read all on Substack</a>
   </div>
 </section>
 
-<!-- PODCAST -->
 <section class="podcast" id="podcast">
-  <div class="podcast-inner">
-    <span class="section-label">From the In-Between — Podcast</span>
-    <h2 class="section-title">Conversations for the space between where you were and where you are going.</h2>
-    <p class="podcast-desc">Each episode is a real conversation about faith, loss, identity, and the slow work of becoming. No performance. No formulas. Just honest talk from someone who is still in it too.</p>
-
+  <div class="section-inner">
+    <span class="section-label">Spoken from the In-Between</span>
+    <p class="podcast-desc">Some things don't stay on the page — these are the ones I say out loud.</p>
     <div class="episode-player">
       <div class="episode-label">Latest Episode</div>
       <div class="episode-title">When the waiting is the answer</div>
       <div class="episode-meta">Episode 12 · 34 min</div>
       <div class="player-bar">
-        <button class="play-btn" onclick="this.innerHTML='<svg viewBox=\'0 0 24 24\'><rect x=\'6\' y=\'4\' width=\'4\' height=\'16\'/><rect x=\'14\' y=\'4\' width=\'4\' height=\'16\'/></svg>'; return false;">
+        <button class="play-btn">
           <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
         </button>
-        <div class="progress"><div class="progress-fill"></div></div>
+        <div class="progress"></div>
         <span class="time">0:00 / 34:12</span>
       </div>
       <a href="#" class="spotify-link">Listen on Spotify →</a>
@@ -674,32 +318,65 @@
   </div>
 </section>
 
-<!-- DOWNLOADS -->
-<section class="downloads" id="books">
-  <div class="downloads-inner">
-    <span class="section-label">Digital Downloads — Payhip</span>
-    <h2 class="section-title">Resources for the in-between.</h2>
-    <div class="product-card">
-      <div>
-        <span class="product-badge">New</span>
-        <div class="product-title">Voice Activated — 40-Day Prayer Guide</div>
-        <p class="product-desc">Forty prophetic prayers rooted in Scripture. Written to be spoken aloud. One per day, from creation to all things made new.</p>
-        <div class="product-format">Digital PDF · Instant download</div>
+<section class="guides" id="guides">
+  <div class="section-inner">
+    <span class="section-label">Resources</span>
+    <h2 class="section-title">Guides & Free Downloads</h2>
+    <div class="guides-grid">
+      <div class="guide-card">
+        <span class="guide-badge">Available Now</span>
+        <div class="guide-title">30-Day Prayer Devotional</div>
+        <p class="guide-desc">A daily guide to prayer for the in-between seasons. One day at a time, one prayer at a time.</p>
+        <div class="guide-format">Digital download · Payhip</div>
+        <a href="#" class="btn-outline">Get the devotional</a>
       </div>
-      <div class="product-cta">
-        <span class="product-price">$7.99</span>
-        <a href="#" class="btn-primary">Get the guide</a>
+      <div class="guide-card">
+        <span class="guide-badge">Coming Soon</span>
+        <div class="guide-title">Voice Activated — Prayer Guide</div>
+        <p class="guide-desc">Prayers to use when you don't have the words. Written to be spoken — one at a time, as needed.</p>
+        <div class="guide-format">Digital download</div>
+        <span style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia); opacity: 0.6;">Coming Soon</span>
       </div>
     </div>
   </div>
 </section>
 
-<!-- EMAIL -->
+<section class="books" id="books">
+  <div class="section-inner">
+    <span class="section-label">Books</span>
+    <h2 class="section-title">What stayed.</h2>
+    <div class="books-stack">
+      <div class="book-card-primary">
+        <div class="book-spine">
+          <div class="book-spine-title">MISSING</div>
+        </div>
+        <div class="book-content">
+          <span class="book-badge">Memoir</span>
+          <div class="book-title-main">MISSING</div>
+          <div class="book-subtitle">One Mother's Faith-Filled Fight for Her Son</div>
+          <p class="book-desc">A true testimony of trusting God through crisis and mental health. Lived in real time. Carried through prayer.</p>
+          <p class="book-testimony">God didn't just rescue my son. He rebuilt my faith.</p>
+          <div class="book-links">
+            <a href="#" class="book-link">▶ As Seen on The Word Network's Testimony Tuesday</a>
+            <a href="#" class="book-link">▶ Testimony Tuesday I — In case you missed it the first time</a>
+            <a href="#" class="book-link">▶ Testimony Tuesday II</a>
+          </div>
+        </div>
+      </div>
+      <div class="book-card-secondary">
+        <div class="book-title-secondary">Yo Mama's Old Fashioned Teacakes Cookbook & Journal</div>
+        <p class="book-desc-secondary">The story of teacakes that we celebrate on Juneteenth.</p>
+        <a href="#" class="btn-outline">Learn more →</a>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="email-section" id="email">
   <div class="email-inner">
     <span class="section-label">Join the List</span>
     <h2 class="section-title">Stay in the room.</h2>
-    <p>Writing that finds you when you need it. Weekly scrolls. Honest reflections. The occasional reminder that you are not alone in the in-between. No noise. Just words worth keeping.</p>
+    <p>Writing that finds you when you need it. Weekly scrolls. Honest reflections. The occasional reminder that you are not alone in the in-between.</p>
     <div class="email-form">
       <input type="email" placeholder="your@email.com">
       <button type="button">I'm in</button>
@@ -708,19 +385,17 @@
   </div>
 </section>
 
-<!-- CLOSING QUOTE -->
 <section class="closing">
-  <div class="divider" style="margin-bottom: 2.5rem;"></div>
+  <div class="closing-rule"></div>
   <blockquote>You are not behind. You are becoming.</blockquote>
-  <div class="divider" style="margin-top: 2.5rem;"></div>
+  <div class="closing-rule"></div>
 </section>
 
-<!-- FOOTER -->
 <footer>
   <div class="footer-links">
-    <a href="#">Substack</a>
+    <a href="https://inkandintercession.substack.com">Substack</a>
     <a href="#">Podcast</a>
-    <a href="#">Books</a>
+    <a href="#books">Books</a>
     <a href="#">Payhip</a>
   </div>
   <p>© 2025 V Méshall Brown · Ink & Intercession</p>
