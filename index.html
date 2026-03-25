@@ -18,130 +18,67 @@
     --gold: #b8964a;
     --cream: #faf6ef;
   }
-
   * { margin: 0; padding: 0; box-sizing: border-box; }
   html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
 
-  body {
-    background: var(--cream);
-    color: var(--ink);
-    font-family: 'Jost', sans-serif;
-    font-weight: 300;
-    line-height: 1.7;
-    overflow-x: hidden;
-  }
-
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 100;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.2rem 4rem;
-    background: rgba(242, 232, 213, 0.95);
-    backdrop-filter: blur(8px);
-    border-bottom: 1px solid var(--sepia);
-  }
-
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(250,246,239,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--parchment-dark); }
   .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
   .nav-logo img { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
   .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); }
   .nav-links { display: flex; gap: 2.5rem; list-style: none; }
   .nav-links a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
   .nav-links a:hover { color: var(--warm-brown); }
+  .nav-links a.active { color: var(--warm-brown); }
 
-  .hero {
-    min-height: 100vh;
-    display: flex;
-    align-items: center;
-    padding: 8rem 4rem 6rem;
-    position: relative;
-    background: var(--parchment);
-    overflow: hidden;
-  }
-
-  .hero::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: radial-gradient(ellipse at 80% 50%, rgba(196,168,130,0.2) 0%, transparent 60%), radial-gradient(ellipse at 20% 80%, rgba(92,64,51,0.08) 0%, transparent 50%);
-    pointer-events: none;
-  }
-
-  .hero-inner { max-width: 1100px; margin: 0 auto; width: 100%; display: grid; grid-template-columns: 1fr 1fr; gap: 6rem; align-items: center; }
-  .hero-tag { font-size: 0.68rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 2rem; display: block; }
-
-  .hero h1 {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 5vw, 5rem);
-    font-weight: 300;
-    line-height: 1.15;
-    color: var(--ink);
-    margin-bottom: 2rem;
-  }
-
-  .hero h1 em { font-style: italic; color: var(--warm-brown); }
-
-  .hero-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 1.1rem;
-    font-style: italic;
-    color: var(--muted);
-    line-height: 1.8;
-    margin-bottom: 2.5rem;
-    border-left: 2px solid var(--sepia);
-    padding-left: 1.2rem;
-  }
-
-  .hero-actions { display: flex; gap: 1.2rem; flex-wrap: wrap; }
-  .hero-right { display: flex; justify-content: center; align-items: center; }
-  .hero-logo { width: 100%; max-width: 380px; opacity: 0.92; filter: sepia(15%); }
-
-  .btn-primary { background: var(--warm-brown); color: var(--parchment); border: none; padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.2s; }
-  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); }
-
-  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--sepia-dark); padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
-  .btn-outline:hover { background: var(--ink); color: var(--parchment); border-color: var(--ink); transform: translateY(-2px); }
-
+  /* SHARED */
   section { padding: 6rem 4rem; }
   .section-inner { max-width: 1100px; margin: 0 auto; }
   .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 1rem; display: block; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 0.5rem; color: var(--ink); }
 
-  .about { background: var(--ink-soft); color: var(--parchment); }
-  .about-inner { max-width: 680px; margin: 0 auto; text-align: center; }
-  .about .section-label { color: var(--sepia); }
-  .about .section-title { color: var(--parchment); }
-  .about p { font-size: 1.05rem; line-height: 1.95; color: rgba(242,232,213,0.75); }
+  .btn-primary { background: var(--warm-brown); color: var(--parchment); border: none; padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: background 0.3s, transform 0.2s; }
+  .btn-primary:hover { background: var(--ink); transform: translateY(-2px); }
+  .btn-outline { background: transparent; color: var(--ink); border: 1px solid var(--sepia-dark); padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+  .btn-outline:hover { background: var(--ink); color: var(--parchment); border-color: var(--ink); transform: translateY(-2px); }
+  .btn-outline-light { background: transparent; color: var(--parchment); border: 1px solid rgba(196,168,130,0.4); padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+  .btn-outline-light:hover { background: rgba(242,232,213,0.08); border-color: var(--sepia); transform: translateY(-2px); }
 
-  .scrolls { background: var(--cream); }
+  /* STATEMENT */
+  .statement { background: var(--parchment); padding: 8rem 4rem; text-align: center; }
+  .statement-inner { max-width: 760px; margin: 0 auto; }
+  .statement-rule { width: 40px; height: 1px; background: var(--sepia); margin: 0 auto 3.5rem; }
+  .statement-rule-bottom { width: 40px; height: 1px; background: var(--sepia); margin: 3.5rem auto 0; }
+  .statement-text { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.9rem, 4vw, 3rem); font-weight: 300; line-height: 1.35; color: var(--ink); }
+
+  /* START HERE */
+  .start-here { background: var(--cream); padding: 7rem 4rem; border-top: 1px solid var(--parchment-dark); }
+  .start-subtext { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); margin-bottom: 4rem; line-height: 1.7; }
+  .start-grid { display: grid; grid-template-columns: repeat(3, 1fr); border: 1px solid var(--parchment-dark); }
+  .start-block { padding: 3rem 2.5rem; border-right: 1px solid var(--parchment-dark); background: var(--parchment); display: flex; flex-direction: column; }
+  .start-block:last-child { border-right: none; }
+  .start-type { font-size: 0.6rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 1.2rem; display: block; }
+  .start-title { font-family: 'Cormorant Garamond', serif; font-size: 1.35rem; font-weight: 400; color: var(--ink); margin-bottom: 1rem; line-height: 1.3; }
+  .start-text { font-size: 0.88rem; color: var(--muted); line-height: 1.8; flex: 1; margin-bottom: 2rem; }
+
+  /* SCROLLS */
+  .scrolls { background: var(--parchment); border-top: 1px solid var(--parchment-dark); }
   .scrolls-subline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7; }
-
   .scrolls-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 2rem; margin-bottom: 3rem; }
-
-  .scroll-card { background: var(--parchment); padding: 2rem; border-top: 2px solid var(--sepia); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; text-decoration: none; display: block; color: inherit; }
-  .scroll-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,24,16,0.1); }
+  .scroll-card { background: var(--cream); padding: 2rem; border-top: 2px solid var(--sepia); transition: transform 0.3s, box-shadow 0.3s; cursor: pointer; text-decoration: none; display: block; color: inherit; }
+  .scroll-card:hover { transform: translateY(-4px); box-shadow: 0 12px 40px rgba(30,24,16,0.08); }
   .scroll-tag { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 0.8rem; display: block; }
   .scroll-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.4; margin-bottom: 0.7rem; color: var(--ink); }
   .scroll-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
   .read-all { text-align: center; margin-top: 1rem; }
 
-  .podcast-intro { background: var(--parchment-dark); padding: 5rem 4rem; }
-  .podcast-intro-inner { max-width: 700px; margin: 0 auto; text-align: center; }
-  .podcast-intro .section-label { color: var(--sepia-dark); }
-  .podcast-intro .section-title { font-size: clamp(1.6rem, 3vw, 2.6rem); margin-bottom: 1.5rem; color: var(--ink); }
-  .podcast-intro p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); line-height: 1.9; }
-
+  /* PODCAST */
   .podcast { background: var(--ink); }
   .podcast .section-label { color: var(--sepia); }
   .podcast-inner-layout { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; }
-  .podcast-mic-img { width: 100%; max-width: 340px; border-radius: 50%; opacity: 0.88; display: block; margin: 0 auto; }
   .podcast-desc { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: rgba(242,232,213,0.92); line-height: 1.9; margin-bottom: 3rem; max-width: 560px; }
-
-  .book-cover { display: flex; align-items: flex-start; justify-content: center; }
-  .book-cover-img { width: 100%; max-width: 260px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: block; }
-
+  .podcast-mic-img { width: 100%; max-width: 340px; border-radius: 50%; opacity: 0.88; display: block; margin: 0 auto; }
   .episode-player { background: rgba(242,232,213,0.06); border: 1px solid rgba(196,168,130,0.2); padding: 2.5rem; max-width: 680px; }
   .episode-label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--sepia); margin-bottom: 0.5rem; }
   .episode-title { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 300; color: var(--parchment); margin-bottom: 0.3rem; }
@@ -155,6 +92,7 @@
   .spotify-link { font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia); text-decoration: none; border-bottom: 1px solid var(--sepia); padding-bottom: 2px; transition: color 0.3s; }
   .spotify-link:hover { color: var(--parchment); border-color: var(--parchment); }
 
+  /* GUIDES */
   .guides { background: var(--cream); }
   .guides-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2rem; margin-top: 2.5rem; }
   .guide-card { border: 1px solid var(--parchment-dark); padding: 2.5rem; background: var(--parchment); }
@@ -163,14 +101,12 @@
   .guide-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.75; margin-bottom: 0.5rem; }
   .guide-format { font-size: 0.7rem; letter-spacing: 0.1em; color: var(--sepia); margin-bottom: 1.5rem; }
 
-  .books { background: var(--parchment); }
-  .books .section-label { color: var(--sepia-dark); }
+  /* BOOKS */
+  .books { background: var(--parchment); border-top: 1px solid var(--parchment-dark); }
   .books-stack { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
-
   .book-card-primary { display: grid; grid-template-columns: 1fr 2.5fr; gap: 4rem; align-items: start; padding: 3rem; background: var(--ink-soft); color: var(--parchment); }
-  .book-spine { background: var(--warm-brown); aspect-ratio: 2/3; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
-  .book-spine::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%); }
-  .book-spine-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--parchment); line-height: 1.1; letter-spacing: 0.08em; text-transform: uppercase; }
+  .book-cover { display: flex; align-items: flex-start; justify-content: center; }
+  .book-cover-img { width: 100%; max-width: 260px; box-shadow: 0 20px 60px rgba(0,0,0,0.5); display: block; }
   .book-content { padding: 0.5rem 0; }
   .book-badge { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sepia); margin-bottom: 1rem; display: block; }
   .book-title-main { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--parchment); margin-bottom: 0.2rem; line-height: 1.05; letter-spacing: 0.03em; }
@@ -180,24 +116,23 @@
   .book-links { display: flex; flex-direction: column; gap: 0.7rem; }
   .book-link { font-size: 0.78rem; letter-spacing: 0.06em; color: var(--sepia); text-decoration: none; border-bottom: 1px solid rgba(196,168,130,0.25); padding-bottom: 3px; display: inline-block; transition: color 0.3s, border-color 0.3s; width: fit-content; }
   .book-link:hover { color: var(--parchment); border-color: var(--parchment); }
-
   .book-card-secondary { padding: 2.5rem; border: 1px solid var(--parchment-dark); background: white; }
   .book-title-secondary { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
   .book-desc-secondary { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
 
-  /* EMAIL — LIGHT */
-  .email-section { background: var(--parchment); color: var(--ink); text-align: center; border-top: 1px solid var(--parchment-dark); }
-  .email-inner { max-width: 520px; margin: 0 auto; }
-  .email-section .section-label { color: var(--sepia-dark); }
-  .email-section .section-title { color: var(--ink); margin-bottom: 1.5rem; }
-  .email-section p { color: var(--muted); font-size: 1rem; line-height: 1.9; margin-bottom: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
-  .email-form { display: flex; max-width: 420px; margin: 0 auto 1rem; }
-  .email-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid var(--sepia); background: white; color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.9rem; outline: none; }
-  .email-form input::placeholder { color: var(--sepia); }
-  .email-form button { background: var(--warm-brown); color: var(--parchment); border: none; padding: 0.9rem 1.6rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
-  .email-form button:hover { background: var(--ink); }
-  .email-fine { font-size: 0.72rem; color: var(--muted); }
+  /* KEEP IN TOUCH */
+  .keep-in-touch { background: var(--cream); text-align: center; padding: 6rem 4rem; border-top: 1px solid var(--parchment-dark); }
+  .keep-inner { max-width: 480px; margin: 0 auto; }
+  .keep-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); font-weight: 300; line-height: 1.2; color: var(--ink); margin-bottom: 1.5rem; }
+  .keep-body { color: var(--muted); font-size: 0.98rem; line-height: 1.9; margin-bottom: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .keep-form { display: flex; max-width: 400px; margin: 0 auto 1rem; }
+  .keep-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid var(--sepia); background: white; color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.9rem; outline: none; }
+  .keep-form input::placeholder { color: var(--sepia); }
+  .keep-form button { background: var(--warm-brown); color: var(--parchment); border: none; padding: 0.9rem 1.6rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; white-space: nowrap; }
+  .keep-form button:hover { background: var(--ink); }
+  .keep-fine { font-size: 0.72rem; color: var(--muted); }
 
+  /* CLOSING */
   .closing { background: var(--ink-soft); text-align: center; padding: 5rem 4rem; }
   .closing blockquote { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.3rem, 2.5vw, 1.9rem); font-style: italic; font-weight: 300; color: var(--parchment); max-width: 560px; margin: 0 auto; line-height: 1.6; }
   .closing-rule { width: 50px; height: 1px; background: var(--sepia); margin: 2rem auto; }
@@ -207,27 +142,24 @@
   footer a:hover { color: var(--sepia); }
   .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
 
-  @keyframes fadeUp { from { opacity: 0; transform: translateY(24px); } to { opacity: 1; transform: translateY(0); } }
-  .hero-tag { animation: fadeUp 0.8s ease forwards; }
-  .hero h1 { animation: fadeUp 0.8s 0.15s ease forwards; opacity: 0; }
-  .hero-sub { animation: fadeUp 0.8s 0.3s ease forwards; opacity: 0; }
-  .hero-actions { animation: fadeUp 0.8s 0.45s ease forwards; opacity: 0; }
-  .hero-right { animation: fadeUp 1s 0.2s ease forwards; opacity: 0; }
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .statement { animation: fadeUp 0.9s 0.1s ease forwards; opacity: 0; }
 
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
-    .nav-links { gap: 1.2rem; }
-    section, .podcast-intro { padding: 4rem 1.5rem; }
-    .hero { padding: 7rem 1.5rem 4rem; }
-    .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
-    .hero-right { order: -1; }
-    .hero-logo { max-width: 240px; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.65rem; }
+    section, .keep-in-touch, .closing { padding: 4rem 1.5rem; }
+    .start-here { padding: 5rem 1.5rem; }
+    .start-grid { grid-template-columns: 1fr; }
+    .start-block { border-right: none; border-bottom: 1px solid var(--parchment-dark); }
+    .start-block:last-child { border-bottom: none; }
     .podcast-inner-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .podcast-right { order: -1; }
     .podcast-mic-img { max-width: 200px; }
     .book-card-primary { grid-template-columns: 1fr; gap: 2rem; }
     .book-cover-img { max-width: 180px; margin: 0 auto; }
-    .email-form { flex-direction: column; }
+    .keep-form { flex-direction: column; }
     footer { padding: 2rem 1.5rem; }
   }
 </style>
@@ -235,42 +167,58 @@
 <body>
 
 <nav>
-  <a href="#" class="nav-logo">
+  <a href="index.html" class="nav-logo">
     <img src="ink and intercession1.png" alt="Ink & Intercession">
     <span class="nav-name">V Méshall Brown</span>
   </a>
   <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
     <li><a href="#writing">Writing</a></li>
     <li><a href="#podcast">Podcast</a></li>
     <li><a href="#books">Books</a></li>
+    <li><a href="contact.html">Leave a Note</a></li>
   </ul>
 </nav>
 
-<section class="hero">
-  <div class="hero-inner">
-    <div class="hero-left">
-      <h1>Some things follow me home.<br>This is where they become <em>words.</em></h1>
-      <div class="hero-actions">
-        <a href="#email" class="btn-primary">Join the list</a>
-        <a href="#podcast" class="btn-outline">Listen to the podcast</a>
+<!-- STATEMENT -->
+<section class="statement" style="padding-top: 10rem;">
+  <div class="statement-inner">
+    <div class="statement-rule"></div>
+    <p class="statement-text">Some things follow me home. This is where they become words.</p>
+    <div class="statement-rule-bottom"></div>
+  </div>
+</section>
+
+<!-- START HERE -->
+<section class="start-here">
+  <div class="section-inner">
+    <span class="section-label">Start Here</span>
+    <h2 class="section-title">Start Here</h2>
+    <p class="start-subtext">If you're new, don't try to take in everything at once. Start with what stays.</p>
+    <div class="start-grid">
+      <div class="start-block">
+        <span class="start-type">Read</span>
+        <div class="start-title">Why Scrolls Still Matter</div>
+        <p class="start-text">What we carry doesn't always announce itself. This is where I started paying attention.</p>
+        <a href="https://inkandintercession.substack.com/p/why-scrolls-still-matter-and-what?r=5hokzq" class="btn-outline" target="_blank" rel="noopener">Read the Scroll</a>
+      </div>
+      <div class="start-block">
+        <span class="start-type">Listen</span>
+        <div class="start-title">The Impatient Pause</div>
+        <p class="start-text">Not everything needs to be solved right away. This is what that sounds like in real time.</p>
+        <a href="https://vmeshallbrown.substack.com/p/the-impatient-pause?r=5hokzq" class="btn-outline" target="_blank" rel="noopener">Listen to the Episode</a>
+      </div>
+      <div class="start-block">
+        <span class="start-type">Stay</span>
+        <div class="start-title">Join the Room</div>
+        <p class="start-text">If something here feels familiar, don't lose track of it. I'll send what matters so you don't have to come looking.</p>
+        <a href="https://inkandintercession.substack.com/welcome" class="btn-outline" target="_blank" rel="noopener">Join</a>
       </div>
     </div>
-    <div class="hero-right">
-      <img src="ink and intercession1.png" alt="Ink & Intercession" class="hero-logo">
-    </div>
   </div>
 </section>
 
-<section class="about">
-  <div class="about-inner">
-    <span class="section-label">About This Space</span>
-    <h2 class="section-title">Sometimes the thing you're looking for finds you first.</h2>
-    <p>That's what writing became for me.</p>
-    <p style="margin-top: 1rem;">And if you're here, maybe something is finding you too.</p>
-    <p style="margin-top: 1rem;">I write about what I see, what stays, and the people I meet along the way.</p>
-  </div>
-</section>
-
+<!-- SCROLLS -->
 <section class="scrolls" id="writing">
   <div class="section-inner">
     <span class="section-label">Scrolls</span>
@@ -304,6 +252,7 @@
   </div>
 </section>
 
+<!-- PODCAST -->
 <section class="podcast" id="podcast">
   <div class="section-inner">
     <div class="podcast-inner-layout">
@@ -331,6 +280,7 @@
   </div>
 </section>
 
+<!-- GUIDES -->
 <section class="guides" id="guides">
   <div class="section-inner">
     <span class="section-label">Resources</span>
@@ -354,6 +304,7 @@
   </div>
 </section>
 
+<!-- BOOKS -->
 <section class="books" id="books">
   <div class="section-inner">
     <span class="section-label">Books</span>
@@ -390,31 +341,35 @@
   </div>
 </section>
 
-<section class="email-section" id="email">
-  <div class="email-inner">
-    <span class="section-label">Join the List</span>
-    <h2 class="section-title">Stay in the room.</h2>
-    <p>Writing that finds you when you need it. Weekly scrolls. Honest reflections. The occasional reminder that you are not alone in the in-between.</p>
-    <div class="email-form">
+<!-- STAY IN THE ROOM -->
+<section class="keep-in-touch">
+  <div class="keep-inner">
+    <span class="section-label">Stay in the Room</span>
+    <h2 class="keep-title">Stay in the room.</h2>
+    <p class="keep-body">I send the Scrolls, the conversations, and what continues after both. You won't have to come looking for it.</p>
+    <div class="keep-form">
       <input type="email" placeholder="your@email.com">
-      <button type="button" onclick="window.open('http://inkandintercession.substack.com/welcome','_blank')">I'm in</button>
+      <button type="button" onclick="window.open('http://inkandintercession.substack.com/welcome','_blank')">Stay in the Room</button>
     </div>
-    <p class="email-fine">No selling. No noise. Unsubscribe anytime.</p>
+    <p class="keep-fine">No selling. No noise. Unsubscribe anytime.</p>
   </div>
 </section>
 
+<!-- CLOSING -->
 <section class="closing">
   <div class="closing-rule"></div>
-  <blockquote>The space between I and you| between me and we| between story and truth.</blockquote>
+  <blockquote>The space between I and you | between me and we | between story and truth.</blockquote>
   <div class="closing-rule"></div>
 </section>
 
 <footer>
   <div class="footer-links">
+    <a href="about.html">About</a>
     <a href="https://inkandintercession.substack.com" target="_blank" rel="noopener">Substack</a>
     <a href="#podcast">Podcast</a>
     <a href="#books">Books</a>
     <a href="https://payhip.com/b/bp6gz" target="_blank" rel="noopener">Payhip</a>
+    <a href="contact.html">Leave a Note</a>
   </div>
   <p>© 2025 V Méshall Brown · Ink & Intercession</p>
 </footer>
