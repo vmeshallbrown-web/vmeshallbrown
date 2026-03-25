@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>About — V Méshall Brown · Ink & Intercession</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8d5;
+    --parchment-dark: #e8d9bf;
+    --sepia: #c4a882;
+    --sepia-dark: #8b6f47;
+    --ink: #1e1810;
+    --ink-soft: #2d2416;
+    --warm-brown: #5c4033;
+    --muted: #7a6a55;
+    --gold: #b8964a;
+    --cream: #faf6ef;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--cream); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(250,246,239,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--parchment-dark); }
+  .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+  .nav-logo img { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--warm-brown); }
+  .nav-links a.active { color: var(--warm-brown); }
+
+  .btn-outline-light { background: transparent; color: var(--parchment); border: 1px solid rgba(196,168,130,0.4); padding: 0.9rem 2rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-block; transition: all 0.3s; }
+  .btn-outline-light:hover { background: rgba(242,232,213,0.08); border-color: var(--sepia); transform: translateY(-2px); }
+
+  /* ABOUT INTRO */
+  .about-intro {
+    background: var(--cream);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    padding: 9rem 4rem 7rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .about-intro::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: radial-gradient(ellipse at 90% 15%, rgba(196,168,130,0.1) 0%, transparent 55%);
+    pointer-events: none;
+  }
+  .about-inner {
+    max-width: 1100px;
+    margin: 0 auto;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1.1fr 0.9fr;
+    gap: 7rem;
+    align-items: center;
+  }
+  .about-text-col { }
+  .about-label {
+    font-size: 0.65rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--sepia-dark);
+    margin-bottom: 1.4rem;
+    display: block;
+  }
+  .about-name {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(2.2rem, 4vw, 3.4rem);
+    font-weight: 300;
+    line-height: 1.1;
+    color: var(--ink);
+    margin-bottom: 2.4rem;
+  }
+  .about-body p {
+    font-size: 1rem;
+    line-height: 2;
+    color: var(--muted);
+    margin-bottom: 1.1rem;
+  }
+  .about-body p:last-child { margin-bottom: 0; }
+
+  .about-image-col {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-image-placeholder {
+    width: 100%;
+    aspect-ratio: 3/4;
+    background: var(--parchment);
+    border: 1px solid var(--parchment-dark);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .about-image-placeholder span {
+    font-size: 0.62rem;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--sepia);
+    opacity: 0.5;
+  }
+
+  /* CONNECT BLOCK */
+  .connect-block {
+    background: var(--ink-soft);
+    padding: 7rem 4rem;
+    text-align: center;
+  }
+  .connect-inner { max-width: 520px; margin: 0 auto; }
+  .connect-rule { width: 40px; height: 1px; background: var(--sepia); margin: 0 auto 3rem; }
+  .connect-rule-bottom { width: 40px; height: 1px; background: var(--sepia); margin: 3rem auto 0; }
+  .connect-text {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(1.3rem, 2.5vw, 1.75rem);
+    font-weight: 300;
+    font-style: italic;
+    color: rgba(242,232,213,0.9);
+    line-height: 1.65;
+    margin-bottom: 1.5rem;
+  }
+  .connect-sub {
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: rgba(196,168,130,0.7);
+    line-height: 1.9;
+    margin-bottom: 2.5rem;
+  }
+
+  footer { background: var(--ink); color: rgba(242,232,213,0.35); text-align: center; padding: 2.5rem 4rem; font-size: 0.75rem; letter-spacing: 0.08em; }
+  footer a { color: rgba(242,232,213,0.35); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--sepia); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+  @keyframes fadeUp { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+  .about-text-col { animation: fadeUp 0.9s 0.15s ease forwards; opacity: 0; }
+  .about-image-col { animation: fadeUp 0.9s 0.3s ease forwards; opacity: 0; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.65rem; }
+    .about-intro { padding: 8rem 1.5rem 5rem; min-height: auto; }
+    .about-inner { grid-template-columns: 1fr; gap: 3rem; }
+    .about-image-col { order: -1; }
+    .about-image-placeholder { aspect-ratio: 4/3; }
+    .connect-block { padding: 5rem 1.5rem; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="ink and intercession1.png" alt="Ink & Intercession">
+    <span class="nav-name">V Méshall Brown</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html" class="active">About</a></li>
+    <li><a href="index.html#writing">Writing</a></li>
+    <li><a href="index.html#podcast">Podcast</a></li>
+    <li><a href="index.html#books">Books</a></li>
+    <li><a href="contact.html">Leave a Note</a></li>
+  </ul>
+</nav>
+
+<!-- ABOUT INTRO — text left, image right -->
+<section class="about-intro">
+  <div class="about-inner">
+    <div class="about-text-col">
+      <span class="about-label">About V Méshall</span>
+      <h1 class="about-name">I'm V Méshall Brown.</h1>
+      <div class="about-body">
+        <p>I didn't start writing to have answers. I started because some things wouldn't leave me alone.</p>
+        <p>What started this wasn't written in ink— but by the Spirit.</p>
+        <p>I've learned to pay attention to what stays— what lingers, what presses, what asks something of me.</p>
+        <p>This space is where I write from that place. Not after I've figured it out. While I'm still in it.</p>
+        <p>You won't find quick conclusions here. But you will find honesty.</p>
+      </div>
+    </div>
+    <div class="about-image-col">
+      <div class="about-image-placeholder">
+        <span>Image</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONNECT BLOCK -->
+<div class="connect-block">
+  <div class="connect-inner">
+    <div class="connect-rule"></div>
+    <p class="connect-text">If something here connects with you, you don't have to hold it alone.</p>
+    <p class="connect-sub">If you need to share something, leave a note or a prayer request. I read what comes through, and I hold it with care.</p>
+    <a href="contact.html" class="btn-outline-light">Leave a Note →</a>
+    <div class="connect-rule-bottom"></div>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="https://inkandintercession.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="index.html#podcast">Podcast</a>
+    <a href="index.html#books">Books</a>
+    <a href="https://payhip.com/b/bp6gz" target="_blank" rel="noopener">Payhip</a>
+    <a href="contact.html">Leave a Note</a>
+  </div>
+  <p>© 2025 V Méshall Brown · Ink & Intercession</p>
+</footer>
+
+</body>
+</html>

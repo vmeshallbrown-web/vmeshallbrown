@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Leave a Note — V Méshall Brown · Ink & Intercession</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --parchment: #f2e8d5;
+    --parchment-dark: #e8d9bf;
+    --sepia: #c4a882;
+    --sepia-dark: #8b6f47;
+    --ink: #1e1810;
+    --ink-soft: #2d2416;
+    --warm-brown: #5c4033;
+    --muted: #7a6a55;
+    --gold: #b8964a;
+    --cream: #faf6ef;
+  }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { background: var(--parchment); color: var(--ink); font-family: 'Jost', sans-serif; font-weight: 300; line-height: 1.7; overflow-x: hidden; min-height: 100vh; }
+
+  /* NAV */
+  nav { position: fixed; top: 0; left: 0; right: 0; z-index: 100; display: flex; justify-content: space-between; align-items: center; padding: 1.2rem 4rem; background: rgba(242,232,213,0.96); backdrop-filter: blur(8px); border-bottom: 1px solid var(--parchment-dark); }
+  .nav-logo { display: flex; align-items: center; gap: 0.8rem; text-decoration: none; }
+  .nav-logo img { width: 36px; height: 36px; object-fit: cover; border-radius: 50%; }
+  .nav-name { font-family: 'Cormorant Garamond', serif; font-size: 1.1rem; font-weight: 400; color: var(--ink); }
+  .nav-links { display: flex; gap: 2.5rem; list-style: none; }
+  .nav-links a { font-size: 0.72rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--muted); text-decoration: none; transition: color 0.3s; }
+  .nav-links a:hover { color: var(--warm-brown); }
+  .nav-links a.active { color: var(--warm-brown); }
+
+  /* PAGE */
+  .page-wrapper { max-width: 600px; margin: 0 auto; padding: 10rem 4rem 6rem; }
+  .page-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 1.2rem; display: block; }
+  .page-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(2.2rem, 4vw, 3.2rem); font-weight: 300; line-height: 1.15; color: var(--ink); margin-bottom: 2rem; }
+  .page-intro { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.08rem; color: var(--muted); line-height: 1.9; margin-bottom: 0.8rem; }
+  .page-intro-sub { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--muted); line-height: 1.9; margin-bottom: 3rem; }
+  .divider { width: 40px; height: 1px; background: var(--sepia); margin-bottom: 3rem; }
+
+  /* FORM */
+  .note-form { display: flex; flex-direction: column; gap: 1.5rem; }
+  .form-group { display: flex; flex-direction: column; gap: 0.5rem; }
+  .form-label { font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--sepia-dark); }
+  .form-label span { color: var(--muted); font-size: 0.6rem; letter-spacing: 0.1em; text-transform: none; margin-left: 0.4rem; }
+  .form-input, .form-textarea { background: white; border: 1px solid var(--parchment-dark); color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.92rem; font-weight: 300; padding: 0.9rem 1.1rem; outline: none; transition: border-color 0.3s; width: 100%; }
+  .form-input:focus, .form-textarea:focus { border-color: var(--sepia-dark); }
+  .form-input::placeholder, .form-textarea::placeholder { color: var(--sepia); opacity: 0.6; }
+  .form-textarea { min-height: 180px; resize: vertical; line-height: 1.7; }
+  .form-checkbox-row { display: flex; align-items: flex-start; gap: 0.85rem; padding: 1.2rem 1.4rem; background: rgba(196,168,130,0.08); border: 1px solid rgba(196,168,130,0.2); cursor: pointer; transition: background 0.2s; }
+  .form-checkbox-row:hover { background: rgba(196,168,130,0.14); }
+  .form-checkbox { width: 16px; height: 16px; accent-color: var(--warm-brown); flex-shrink: 0; margin-top: 2px; cursor: pointer; }
+  .checkbox-label { font-size: 0.85rem; color: var(--muted); line-height: 1.5; cursor: pointer; user-select: none; }
+  .form-submit { background: var(--warm-brown); color: var(--parchment); border: none; padding: 1rem 2.5rem; font-family: 'Jost', sans-serif; font-size: 0.72rem; letter-spacing: 0.18em; text-transform: uppercase; cursor: pointer; transition: background 0.3s, transform 0.2s; align-self: flex-start; margin-top: 0.5rem; }
+  .form-submit:hover { background: var(--ink); transform: translateY(-2px); }
+
+  .form-closing { margin-top: 2.5rem; padding-top: 2.5rem; border-top: 1px solid var(--parchment-dark); }
+  .form-closing p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--muted); line-height: 1.85; margin-bottom: 1.5rem; }
+  .form-disclaimer { font-size: 0.72rem; color: rgba(122,106,85,0.6); line-height: 1.7; padding-top: 1rem; border-top: 1px solid var(--parchment-dark); }
+
+  .form-success { display: none; text-align: center; padding: 3rem 0; }
+  .form-success.visible { display: block; }
+  .form-success-rule { width: 40px; height: 1px; background: var(--sepia); margin: 0 auto 2rem; }
+  .form-success h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; font-weight: 300; color: var(--ink); margin-bottom: 1rem; }
+  .form-success p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--muted); line-height: 1.9; }
+
+  footer { background: var(--ink); color: rgba(242,232,213,0.35); text-align: center; padding: 2.5rem 4rem; font-size: 0.75rem; letter-spacing: 0.08em; }
+  footer a { color: rgba(242,232,213,0.35); text-decoration: none; transition: color 0.3s; }
+  footer a:hover { color: var(--sepia); }
+  .footer-links { display: flex; justify-content: center; gap: 2rem; margin-bottom: 1rem; flex-wrap: wrap; }
+
+  @media (max-width: 900px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { gap: 1rem; }
+    .nav-links a { font-size: 0.65rem; }
+    .page-wrapper { padding: 8rem 1.5rem 5rem; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">
+    <img src="ink and intercession1.png" alt="Ink & Intercession">
+    <span class="nav-name">V Méshall Brown</span>
+  </a>
+  <ul class="nav-links">
+    <li><a href="about.html">About</a></li>
+    <li><a href="index.html#writing">Writing</a></li>
+    <li><a href="index.html#podcast">Podcast</a></li>
+    <li><a href="index.html#books">Books</a></li>
+    <li><a href="contact.html" class="active">Leave a Note</a></li>
+  </ul>
+</nav>
+
+<div class="page-wrapper">
+  <span class="page-label">Leave a Note</span>
+  <h1 class="page-title">Leave a Note</h1>
+  <p class="page-intro">If something brought you here, you don't have to carry it by yourself.</p>
+  <p class="page-intro-sub">You can leave it here— a thought, a response, or a prayer request.</p>
+  <div class="divider"></div>
+
+  <form class="note-form" id="noteForm">
+    <div class="form-group">
+      <label class="form-label" for="name">Name <span>(optional)</span></label>
+      <input class="form-input" type="text" id="name" name="name" placeholder="Your name">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="email">Email <span>(optional)</span></label>
+      <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com">
+    </div>
+    <div class="form-group">
+      <label class="form-label" for="message">Message <span style="color: var(--sepia-dark);">*</span></label>
+      <textarea class="form-textarea" id="message" name="message" placeholder="Leave your thought, response, or prayer request here…" required></textarea>
+    </div>
+    <label class="form-checkbox-row" for="prayerRequest">
+      <input class="form-checkbox" type="checkbox" id="prayerRequest" name="prayerRequest">
+      <span class="checkbox-label">This is a prayer request</span>
+    </label>
+    <button type="submit" class="form-submit">Send</button>
+  </form>
+
+  <div class="form-success" id="formSuccess">
+    <div class="form-success-rule"></div>
+    <h3>It's been received.</h3>
+    <p>Thank you for leaving something here. It won't be ignored.</p>
+  </div>
+
+  <div class="form-closing">
+    <p>I read what comes through. I may not always respond, but nothing shared here is ignored.</p>
+    <p class="form-disclaimer">Please don't include sensitive personal information you wouldn't want shared electronically.</p>
+  </div>
+</div>
+
+<footer>
+  <div class="footer-links">
+    <a href="about.html">About</a>
+    <a href="https://inkandintercession.substack.com" target="_blank" rel="noopener">Substack</a>
+    <a href="index.html#podcast">Podcast</a>
+    <a href="index.html#books">Books</a>
+    <a href="https://payhip.com/b/bp6gz" target="_blank" rel="noopener">Payhip</a>
+    <a href="contact.html">Leave a Note</a>
+  </div>
+  <p>© 2025 V Méshall Brown · Ink & Intercession</p>
+</footer>
+
+<script>
+  document.getElementById('noteForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    const message = document.getElementById('message').value.trim();
+    if (!message) return;
+    this.style.display = 'none';
+    document.getElementById('formSuccess').classList.add('visible');
+  });
+</script>
+
+</body>
+</html>
