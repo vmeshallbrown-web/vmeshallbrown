@@ -3,7 +3,6 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>V Méshall Brown — Ink & Intercession</title>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400;1,600&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   :root {
@@ -109,17 +108,11 @@
   .section-label { font-size: 0.65rem; letter-spacing: 0.3em; text-transform: uppercase; color: var(--sepia-dark); margin-bottom: 1rem; display: block; }
   .section-title { font-family: 'Cormorant Garamond', serif; font-size: clamp(1.8rem, 3.5vw, 3rem); font-weight: 300; line-height: 1.2; margin-bottom: 0.5rem; color: var(--ink); }
 
-  /* ABOUT — now with photo */
   .about { background: var(--ink-soft); color: var(--parchment); }
-  .about-layout { max-width: 1000px; margin: 0 auto; display: grid; grid-template-columns: 280px 1fr; gap: 5rem; align-items: center; }
-  .about-photo-wrap { position: relative; }
-  .about-photo { width: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: top center; display: block; filter: sepia(12%) contrast(1.04); }
-  .about-photo-border { position: absolute; inset: -8px; border: 1px solid rgba(196,168,130,0.25); pointer-events: none; }
-  .about-text { }
+  .about-inner { max-width: 680px; margin: 0 auto; text-align: center; }
   .about .section-label { color: var(--sepia); }
-  .about .section-title { color: var(--parchment); margin-bottom: 1.5rem; }
+  .about .section-title { color: var(--parchment); }
   .about p { font-size: 1.05rem; line-height: 1.95; color: rgba(242,232,213,0.75); }
-  .about p + p { margin-top: 1rem; }
 
   .scrolls { background: var(--cream); }
   .scrolls-subline { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.05rem; color: var(--muted); margin-bottom: 2.5rem; line-height: 1.7; }
@@ -132,6 +125,12 @@
   .scroll-card h3 { font-family: 'Cormorant Garamond', serif; font-size: 1.15rem; font-weight: 400; line-height: 1.4; margin-bottom: 0.7rem; color: var(--ink); }
   .scroll-card p { font-size: 0.85rem; color: var(--muted); line-height: 1.7; }
   .read-all { text-align: center; margin-top: 1rem; }
+
+  .podcast-intro { background: var(--parchment-dark); padding: 5rem 4rem; }
+  .podcast-intro-inner { max-width: 700px; margin: 0 auto; text-align: center; }
+  .podcast-intro .section-label { color: var(--sepia-dark); }
+  .podcast-intro .section-title { font-size: clamp(1.6rem, 3vw, 2.6rem); margin-bottom: 1.5rem; color: var(--ink); }
+  .podcast-intro p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1.1rem; color: var(--muted); line-height: 1.9; }
 
   .podcast { background: var(--ink); }
   .podcast .section-label { color: var(--sepia); }
@@ -168,6 +167,9 @@
   .books-stack { display: flex; flex-direction: column; gap: 2.5rem; margin-top: 2.5rem; }
 
   .book-card-primary { display: grid; grid-template-columns: 1fr 2.5fr; gap: 4rem; align-items: start; padding: 3rem; background: var(--ink-soft); color: var(--parchment); }
+  .book-spine { background: var(--warm-brown); aspect-ratio: 2/3; display: flex; align-items: center; justify-content: center; padding: 2rem; text-align: center; position: relative; overflow: hidden; }
+  .book-spine::before { content: ''; position: absolute; inset: 0; background: linear-gradient(135deg, rgba(255,255,255,0.06) 0%, transparent 50%); }
+  .book-spine-title { font-family: 'Cormorant Garamond', serif; font-size: 1.6rem; font-weight: 600; color: var(--parchment); line-height: 1.1; letter-spacing: 0.08em; text-transform: uppercase; }
   .book-content { padding: 0.5rem 0; }
   .book-badge { font-size: 0.62rem; letter-spacing: 0.22em; text-transform: uppercase; color: var(--sepia); margin-bottom: 1rem; display: block; }
   .book-title-main { font-family: 'Cormorant Garamond', serif; font-size: 2.2rem; font-weight: 600; color: var(--parchment); margin-bottom: 0.2rem; line-height: 1.05; letter-spacing: 0.03em; }
@@ -182,10 +184,11 @@
   .book-title-secondary { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; font-weight: 400; color: var(--ink); margin-bottom: 0.5rem; }
   .book-desc-secondary { font-size: 0.92rem; color: var(--muted); line-height: 1.8; margin-bottom: 1.5rem; }
 
-  .email-section { background: var(--parchment); color: var(--ink); text-align: center; border-top: 1px solid var(--parchment-dark); }
+  /* STAY IN THE ROOM */
+  .keep-in-touch { background: var(--parchment); color: var(--ink); text-align: center; border-top: 1px solid var(--parchment-dark); }
   .email-inner { max-width: 520px; margin: 0 auto; }
-  .email-section .section-label { color: var(--sepia-dark); }
-  .email-section .section-title { color: var(--ink); margin-bottom: 1.5rem; }
+  .keep-in-touch .section-title { color: var(--ink); margin-bottom: 1.5rem; }
+  .closing-line { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--muted); margin-top: 2.5rem; line-height: 1.8; }
   .email-section p { color: var(--muted); font-size: 1rem; line-height: 1.9; margin-bottom: 2.5rem; font-family: 'Cormorant Garamond', serif; font-style: italic; }
   .email-form { display: flex; max-width: 420px; margin: 0 auto 1rem; }
   .email-form input { flex: 1; padding: 0.9rem 1.2rem; border: 1px solid var(--sepia); background: white; color: var(--ink); font-family: 'Jost', sans-serif; font-size: 0.9rem; outline: none; }
@@ -213,14 +216,11 @@
   @media (max-width: 900px) {
     nav { padding: 1rem 1.5rem; }
     .nav-links { gap: 1.2rem; }
-    .nav-links a { font-size: 0.65rem; }
-    section { padding: 4rem 1.5rem; }
+    section, .podcast-intro { padding: 4rem 1.5rem; }
     .hero { padding: 7rem 1.5rem 4rem; }
     .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
     .hero-right { order: -1; }
     .hero-logo { max-width: 240px; }
-    .about-layout { grid-template-columns: 1fr; gap: 2.5rem; }
-    .about-photo { aspect-ratio: 4/3; }
     .podcast-inner-layout { grid-template-columns: 1fr; gap: 2.5rem; }
     .podcast-right { order: -1; }
     .podcast-mic-img { max-width: 200px; }
@@ -234,10 +234,9 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo">
-    <img src="logo_png.png" alt="Ink & Intercession">
-    <span class="nav-name">V Méshall Brown</span>
-  </a>
+  <a href="#" class="nav-logo">
+    <img src="logo.png" alt="Ink & Intercession">
+      </a>
   <ul class="nav-links">
     <li><a href="about.html">About</a></li>
     <li><a href="#writing">Writing</a></li>
@@ -257,30 +256,24 @@
       </div>
     </div>
     <div class="hero-right">
-      <img src="logo_png.png" alt="Ink & Intercession" class="hero-logo">
+      <img src="ink and intercession1.png" alt="Ink & Intercession" class="hero-logo">
     </div>
   </div>
 </section>
 
 <section class="about">
-  <div class="about-layout">
-    <div class="about-photo-wrap">
-      <img src="image.png" alt="V Méshall Brown" class="about-photo">
-      <div class="about-photo-border"></div>
-    </div>
-    <div class="about-text">
-      <span class="section-label">About This Space</span>
-      <h2 class="section-title">Sometimes the thing you're looking for finds you first.</h2>
-      <p>That's what writing became for me.</p>
-      <p>And if you're here, maybe something is finding you too.</p>
-      <p>I write about what I see, what stays, and the people I meet along the way.</p>
-    </div>
+  <div class="about-inner">
+    <span class="section-label">Start Here</span>
+    <h2 class="section-title">Sometimes the thing you're looking for finds you first.</h2>
+    <p>That's what writing became for me.</p>
+    <p style="margin-top: 1rem;">And if you're here, maybe something is finding you too.</p>
+    <p style="margin-top: 1rem;">I write about what I see, what stays, and the people I meet along the way.</p>
   </div>
 </section>
 
 <section class="scrolls" id="writing">
   <div class="section-inner">
-    <span class="section-label">Scrolls</span>
+    <span class="section-label"></span>
     <h2 class="section-title">From the In-Between</h2>
     <p class="scrolls-subline">What I witness. What I write. What I carry. What becomes prayer.</p>
     <div class="scrolls-grid">
@@ -299,7 +292,7 @@
         <h3>The Stewardship of Small Things</h3>
         <p>Faith left unpracticed fades. What we ignore forgets how to shine.</p>
       </a>
-      <a href="https://vmeshallbrown.substack.com/p/shared-weight?r=5hokzq" class="scroll-card" target="_blank" rel="noopener">
+      <a href="https://inkandintercession.substack.com/p/shared-weight" class="scroll-card" target="_blank" rel="noopener">
         <span class="scroll-tag">Intercession</span>
         <h3>Shared Weight</h3>
         <p>This isn't about becoming less strong. It's about letting strength rest.</p>
@@ -319,16 +312,16 @@
         <p class="podcast-desc">Some things don't stay on the page — these are the ones I say out loud.</p>
         <div class="episode-player">
           <div class="episode-label">Latest Episode</div>
-          <div class="episode-title">The Impatient Pause</div>
-          <div class="episode-meta">Inspirational Ink · Listen on Substack</div>
+          <div class="episode-title">The Impatient Pause — Begin Again</div>
+          <div class="episode-meta">Ink & Intercession · Listen on Substack</div>
           <div class="player-bar">
-            <button class="play-btn" onclick="window.open('https://vmeshallbrown.substack.com/p/the-impatient-pause?r=5hokzq','_blank')">
+            <button class="play-btn" onclick="window.open('https://open.substack.com/pub/inkandintercession/p/the-impatient-pause-begin-again?r=5hokzq&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true','_blank')">
               <svg viewBox="0 0 24 24"><polygon points="5,3 19,12 5,21"/></svg>
             </button>
             <div class="progress"></div>
             <span class="time">▶ Press to listen</span>
           </div>
-          <a href="https://vmeshallbrown.substack.com/p/the-impatient-pause?r=5hokzq" class="spotify-link" target="_blank" rel="noopener">Listen on Substack →</a>
+          <a href="https://open.substack.com/pub/inkandintercession/p/the-impatient-pause-begin-again?r=5hokzq&utm_campaign=post&utm_medium=web&showWelcomeOnShare=true" class="spotify-link" target="_blank" rel="noopener">Listen on Substack →</a>
         </div>
       </div>
       <div class="podcast-right">
@@ -344,17 +337,13 @@
     <h2 class="section-title">Guides & Free Downloads</h2>
     <div class="guides-grid">
       <div class="guide-card">
-        <span class="guide-badge">Available Now</span>
         <div class="guide-title">30-Day Prayer Devotional</div>
         <p class="guide-desc">A daily guide to prayer for the in-between seasons. One day at a time, one prayer at a time.</p>
-        <div class="guide-format">Digital download · Payhip</div>
-        <a href="https://payhip.com/b/bp6gz" class="btn-outline" target="_blank" rel="noopener">Get the devotional</a>
+        <a href="https://payhip.com/b/bp6gz" class="btn-primary" target="_blank" rel="noopener" style="margin-top: 1rem; display: inline-block;">Get it on Payhip</a>
       </div>
       <div class="guide-card">
-        <span class="guide-badge">Coming Soon</span>
         <div class="guide-title">Voice Activated — Prayer Guide</div>
         <p class="guide-desc">Prayers to use when you don't have the words. Written to be spoken — one at a time, as needed.</p>
-        <div class="guide-format">Digital download</div>
         <span style="font-size: 0.72rem; letter-spacing: 0.1em; text-transform: uppercase; color: var(--sepia); opacity: 0.6;">Coming Soon</span>
       </div>
     </div>
@@ -389,17 +378,16 @@
         <div class="book-title-secondary">Yo Mama's Old Fashioned Teacakes Cookbook & Journal</div>
         <p class="book-desc-secondary">The story of teacakes that we celebrate on Juneteenth.</p>
         <div style="display: flex; gap: 1rem; flex-wrap: wrap; align-items: center;">
+          <a href="https://youtu.be/FqQNdc4mgsw?si=CPif6P8efFRBIfOC" class="btn-outline" target="_blank" rel="noopener">▶ Yo Mama's Teacakes Debut Reel</a>
           <a href="https://a.co/d/gkGtoF0" class="btn-outline" target="_blank" rel="noopener">Get the book →</a>
-          <a href="https://youtu.be/1205pE4u82U?si=z4_ZbR_iKoQPGYp_" class="btn-outline" target="_blank" rel="noopener">▶ Watch: The Teacakes Story</a>
         </div>
       </div>
     </div>
   </div>
 </section>
 
-<section class="email-section" id="email">
+<section class="keep-in-touch" id="email">
   <div class="email-inner">
-    <span class="section-label">Join the List</span>
     <h2 class="section-title">Stay in the room.</h2>
     <p>Writing that finds you when you need it. Weekly scrolls. Honest reflections. The occasional reminder that you are not alone in the in-between.</p>
     <div class="email-form">
@@ -407,25 +395,18 @@
       <button type="button" onclick="window.open('http://inkandintercession.substack.com/welcome','_blank')">I'm in</button>
     </div>
     <p class="email-fine">No selling. No noise. Unsubscribe anytime.</p>
+    <p class="closing-line">The space between I and you | between me and we | between story and truth.</p>
   </div>
-</section>
-
-<section class="closing">
-  <div class="closing-rule"></div>
-  <blockquote>The space between I and you| between me and we| between story and truth.</blockquote>
-  <div class="closing-rule"></div>
 </section>
 
 <footer>
   <div class="footer-links">
-    <a href="about.html">About</a>
     <a href="https://inkandintercession.substack.com" target="_blank" rel="noopener">Substack</a>
     <a href="#podcast">Podcast</a>
     <a href="#books">Books</a>
     <a href="https://payhip.com/b/bp6gz" target="_blank" rel="noopener">Payhip</a>
-    <a href="contact.html">Leave a Note</a>
   </div>
-  <p>© 2025 V Méshall Brown · Ink & Intercession</p>
+  <p>© 2025 V Méshall Brown</p>
 </footer>
 
 </body>
